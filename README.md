@@ -1,7 +1,7 @@
 # N5 .NET 8 Web API Challenge
 
 ## Descripción
-Este proyecto consiste en desarrollar una **Web API** en **.NET 8** para gestionar el registro de permisos de usuarios. La aplicación debe seguir las mejores prácticas de desarrollo, incluyendo el uso de **Entity Framework**, **Elasticsearch**, **patrón de repositorio y unidad de trabajo**, y **CQRS**. Además, se debe construir una aplicación **ReactJS** con **Axios** para consumir la API y desarrollar pruebas unitarias.
+Este proyecto consiste en una **Web API** en **.NET 8** para gestionar el registro de permisos de usuarios. La aplicación debe sigue las mejores prácticas de desarrollo, incluyendo el uso de **Entity Framework**, **Elasticsearch**, **patrón de repositorio y unidad de trabajo**, y **CQRS**. Además, es consumida por una aplicación **ReactJS** con **Axios**, tambien desarrolla pruebas unitarias.
 
 ## Tecnologías Utilizadas
 - **.NET 8**
