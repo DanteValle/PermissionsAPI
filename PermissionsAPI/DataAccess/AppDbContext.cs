@@ -19,7 +19,7 @@ namespace PermissionsAPI.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configurar la relación entre Permission y PermissionType
+            // Configura la relación entre Permission y PermissionType
             modelBuilder.Entity<Permission>()
                 .HasOne(p => p.PermissionType)
                 .WithMany(pt => pt.Permissions)

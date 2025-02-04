@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PermissionsAPI.DataAccess;
+using PermissionsAPI.Infrastructure;
 using System.Linq.Expressions;
 
 namespace PermissionsAPI.Repositories
@@ -8,41 +9,97 @@ namespace PermissionsAPI.Repositories
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<T> _dbSet;
+        protected readonly ILog _log;
 
-        public GenericRepository(AppDbContext context)
+        public GenericRepository(AppDbContext context,ILog log)
         {
             _context = context;
             _dbSet = _context.Set<T>();
+            _log = log;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+           
+            try
+            {
+                return await _dbSet.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("ERROR",ex);
+                throw;
+            }
         }
 
         public async Task<T> GetAsync(int id)
         {
-            return await _dbSet.FindAsync(id);
+            
+            try
+            {
+                return await _dbSet.FindAsync(id);
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("ERROR", ex);
+                throw;
+            }
         }
 
         public async Task AddAsync(T entity)
         {
-            await _dbSet.AddAsync(entity);
+            try
+            {
+                await _dbSet.AddAsync(entity);
+
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("ERROR", ex);
+                throw;
+            }
         }
 
         public void Update(T entity)
         {
-            _dbSet.Update(entity);
+            try
+            {
+                _dbSet.Update(entity);
+
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("ERROR", ex);
+                throw;
+            }
         }
 
         public void Delete(T entity)
         {
-            _dbSet.Remove(entity);
+            try
+            {
+                _dbSet.Remove(entity);
+
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("ERROR", ex);
+                throw;
+            }
         }
 
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _dbSet.Where(predicate).ToListAsync();
+            try
+            {
+                return await _dbSet.Where(predicate).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("ERROR", ex);
+                throw;
+            }
         }
     }
 }

@@ -1,14 +1,19 @@
 using PermissionsAPI.DataAccess;
 using PermissionsAPI.Repositories;
-
+using PermissionsAPI.Services;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Configurar la cadena de conexión (defínela en appsettings.json)
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Configura el DbContext utilizando SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddSingleton<IElasticSearchService, ElasticSearchService>();
+builder.Services.AddScoped<IPermissionService, PermissionService>();
 
 
 builder.Services.AddControllers();

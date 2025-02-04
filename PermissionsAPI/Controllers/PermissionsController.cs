@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PermissionsAPI.CQRS.Commands;
+using PermissionsAPI.CQRS.Queries;
+using PermissionsAPI.Infrastructure;
+using PermissionsAPI.Services;
 
 namespace PermissionsAPI.Controllers
 {
@@ -7,31 +11,59 @@ namespace PermissionsAPI.Controllers
     [ApiController]
     public class PermissionsController : ControllerBase
     {
-        public PermissionsController()
+        private readonly IPermissionService _permissionService;
+        private readonly ILog _log;
+
+        public PermissionsController(IPermissionService permissionService,ILog log)
         {
-                
+            _permissionService = permissionService;
+            _log = log;
         }
 
         [HttpPost("request")]
         public async Task<IActionResult> RequestPermission([FromBody] RequestPermissionCommand command)
         {
-            var result = await _permissionService.RequestPermissionAsync(command);
-            return Ok(result);
+            try
+            {
+                var result = await _permissionService.RequestPermissionAsync(command);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("RequestPermission", ex);
+                throw;
+            }
         }
 
         [HttpPut("modify")]
         public async Task<IActionResult> ModifyPermission([FromBody] ModifyPermissionCommand command)
         {
-            var result = await _permissionService.ModifyPermissionAsync(command);
-            return Ok(result);
+            try
+            {
+                var result = await _permissionService.ModifyPermissionAsync(command);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("ModifyPermission", ex);
+                throw;
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> GetPermissions()
         {
-            var query = new GetPermissionsQuery();
-            var result = await _permissionService.GetPermissionsAsync(query);
-            return Ok(result);
+            try
+            {
+                var query = new GetPermissionsQuery();
+                var result = await _permissionService.GetPermissionsAsync(query);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _log.Exeption("GetPermissions", ex);
+                throw;
+            }
         }
     }
 }
