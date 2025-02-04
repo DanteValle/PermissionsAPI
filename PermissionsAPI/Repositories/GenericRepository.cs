@@ -9,13 +9,11 @@ namespace PermissionsAPI.Repositories
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<T> _dbSet;
-        protected readonly ILog _log;
 
-        public GenericRepository(AppDbContext context,ILog log)
+        public GenericRepository(AppDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
-            _log = log;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -27,7 +25,6 @@ namespace PermissionsAPI.Repositories
             }
             catch (Exception ex)
             {
-                _log.Exeption("ERROR",ex);
                 throw;
             }
         }
@@ -41,7 +38,6 @@ namespace PermissionsAPI.Repositories
             }
             catch (Exception ex)
             {
-                _log.Exeption("ERROR", ex);
                 throw;
             }
         }
@@ -55,7 +51,6 @@ namespace PermissionsAPI.Repositories
             }
             catch (Exception ex)
             {
-                _log.Exeption("ERROR", ex);
                 throw;
             }
         }
@@ -69,7 +64,6 @@ namespace PermissionsAPI.Repositories
             }
             catch (Exception ex)
             {
-                _log.Exeption("ERROR", ex);
                 throw;
             }
         }
@@ -83,7 +77,6 @@ namespace PermissionsAPI.Repositories
             }
             catch (Exception ex)
             {
-                _log.Exeption("ERROR", ex);
                 throw;
             }
         }
@@ -97,7 +90,6 @@ namespace PermissionsAPI.Repositories
             }
             catch (Exception ex)
             {
-                _log.Exeption("ERROR", ex);
                 throw;
             }
         }

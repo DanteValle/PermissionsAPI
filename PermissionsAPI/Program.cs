@@ -2,6 +2,7 @@ using PermissionsAPI.DataAccess;
 using PermissionsAPI.Repositories;
 using PermissionsAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using PermissionsAPI.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSingleton<IElasticSearchService, ElasticSearchService>();
 builder.Services.AddScoped<IPermissionService, PermissionService>();
+builder.Services.AddScoped<ILog, Log>();
 
 
 builder.Services.AddControllers();

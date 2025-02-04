@@ -30,7 +30,7 @@ namespace PermissionsAPI.Services
                 // Crear la entidad Permission
                 var permission = new Permission
                 {
-                    Id = command.Id,
+                    //Id = command.Id,
                     PermissionTypeId = command.PermissionTypeId,
                     NameEmployee = command.NameEmploye,
                     LastNameEmployee = command.LastNameEmployee,
@@ -45,7 +45,7 @@ namespace PermissionsAPI.Services
 
                 return permission;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
