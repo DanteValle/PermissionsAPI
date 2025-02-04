@@ -71,8 +71,9 @@ POST /api/permissions
 **Body:**
 ```json
 {
-  "userId": 1,
-  "permissionType": "Read"
+  "NameEmployee": "Read",
+  "LastNameEmployee": "Read"
+  "permissionType": 1
 }
 ```
 
@@ -88,14 +89,12 @@ PUT /api/permissions/{id}
 **Body:**
 ```json
 {
-  "permissionType": "Write"
+  "NameEmployee": "Read",
+  "LastNameEmployee": "Read"
+  "permissionType": 1
 }
 ```
 
-### **4. Eliminar un Permiso**
-```http
-DELETE /api/permissions/{id}
-```
 
 ## Pruebas Unitarias
 Para ejecutar las pruebas:
@@ -104,5 +103,5 @@ dotnet test
 ```
 
 ## Autores
-- **[Tu Nombre]**
+- **Dante Valle**
 
