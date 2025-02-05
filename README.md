@@ -10,6 +10,7 @@ Este proyecto consiste en una **Web API** en **.NET 8** para gestionar el regist
 - **SQL Server**
 - **Elasticsearch**
 - **CQRS**
+- **JWT**(autenticaciones, seguridad)
 - **ReactJS**
 - **Axios**
 - **xUnit** (para pruebas unitarias)
@@ -34,7 +35,7 @@ git clone <repo_url>
 cd <nombre_proyecto>
 ```
 
-### 2. Configurar la Base de Datos
+### 2. Configurar la Base de Datos (Tambien lo puedo manejar con procedimiento almacenado)
 - Asegurarse de tener **SQL Server** en ejecución.
 - Crear la base de datos `N5`.
 - Configurar la cadena de conexión en `appsettings.json`:
