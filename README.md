@@ -22,6 +22,8 @@ Este proyecto consiste en una **Web API** en **.NET 8** para gestionar el regist
    - Uso de **Entity Framework Core** con **SQL Server**.
    - Integración con **Elasticsearch**.
    - Implementación de **CQRS**.
+   - Autenticaicon con tokens **JWT**.
+   - Middleware para los log **ILog**
    - Pruebas unitarias.
 
 2. **Aplicación en ReactJS**
