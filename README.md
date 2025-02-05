@@ -9,7 +9,7 @@ Este proyecto consiste en una **Web API** en **.NET 8** para gestionar el regist
 - **Entity Framework Core** (EF Core)
 - **SQL Server**
 - **Elasticsearch**
-- **CQRS**
+- Patron **CQRS**
 - **JWT**(autenticaciones, seguridad)
 - **ReactJS**
 - **Axios**
