@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PermissionsAPI.CQRS.Commands;
 using PermissionsAPI.CQRS.Queries;
@@ -9,6 +10,7 @@ namespace PermissionsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PermissionsController : ControllerBase
     {
         private readonly IPermissionService _permissionService;
