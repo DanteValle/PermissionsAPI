@@ -15,6 +15,7 @@ namespace PermissionsAPI.DataAccess
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<PermissionType> PermissionTypes { get; set; }
 
+        //Tambien lo puedo manejar con procedimientos almacenados si me lo hubieran pedido 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
