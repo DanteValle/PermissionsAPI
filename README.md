@@ -16,7 +16,7 @@ Este proyecto consiste en una **Web API** en **.NET 8** para gestionar el regist
 - **xUnit** (para pruebas unitarias)
 
 ## Requisitos
-1. **API en .NET 8**
+1. **API en .NET 8** (folder PermissionsApi)
    - CRUD de permisos de usuario.
    - Implementación del patrón **Repositorio y Unidad de Trabajo**.
    - Uso de **Entity Framework Core** con **SQL Server**.
@@ -26,7 +26,7 @@ Este proyecto consiste en una **Web API** en **.NET 8** para gestionar el regist
    - Middleware para los log **ILog**
    - Pruebas unitarias.
 
-2. **Aplicación en ReactJS**
+2. **Aplicación en ReactJS** (folder Permissions)
    - Consumo de la API con **Axios**.
    - Interfaz de usuario simple para gestionar los permisos.
 
