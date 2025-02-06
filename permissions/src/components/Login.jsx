@@ -8,30 +8,58 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = await authAPI.login({ username, password }); // Envía las credenciales
-      localStorage.setItem("token", token); // Guarda el token en localStorage
-      onLogin(); // Llama a la función onLogin para redirigir al usuario
+      const token = await authAPI.login({ username, password });
+      localStorage.setItem("token", token);
+      onLogin();
     } catch (error) {
       console.error("Error al iniciar sesión", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Usuario"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Iniciar Sesión</button>
-    </form>
+    <div
+      className="login-container"
+      style={{
+        backgroundImage: "url('https://785-cms-cdn.azureedge.net/n5cmsblob/2025/01/portada-blog-11-696x440.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div className="card shadow" style={{ padding: "20px", maxWidth: "400px", background: "rgba(255, 255, 255, 0.9)", borderRadius: "10px" }}>
+        <h3 className="text-center">Iniciar Sesión</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">Usuario</label>
+            <input
+              type="text"
+              id="username"
+              className="form-control"
+              placeholder="Usuario"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              className="form-control"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="d-grid">
+            <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
