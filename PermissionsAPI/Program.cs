@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+string _myCore = "AllowAll";
 // Add services to the container.
 // Configurar la cadena de conexión (defínela en appsettings.json)
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -23,6 +23,17 @@ builder.Services.AddScoped<IPermissionService, PermissionService>();
 builder.Services.AddScoped<ILog, Log>();
 builder.Services.AddSingleton<IAuthService, AuthService>();
 // Configurar la autenticación JWT
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: _myCore, builder =>
+    {
+        builder.WithOrigins("*");
+        builder.WithHeaders("*");
+        builder.WithMethods("*");
+        //.AllowAnyHeader()
+        //.AllowAnyMethod();
+    });
+});
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -53,7 +64,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(_myCore);
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
