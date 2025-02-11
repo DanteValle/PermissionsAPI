@@ -23,7 +23,7 @@ namespace PermissionsAPI.Infrastructure
         {
             WriteLog(obj, "EXCEPTION", message);
         }
-        public void Error(object? obj = null, string message = "")
+        public void Error(object? obj = null, string? message = "")
         {
             WriteLog(obj, "ERROR", message: message);
         }
